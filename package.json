@@ -4,7 +4,9 @@
   "description": "基于nodejs,为vue-admin-system开发api server",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=dev nodemon app.js",
+    "prod": "cross-env NODE_ENV=production nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,9 @@
     "boom": "^7.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4"
   }
 }

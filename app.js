@@ -1,5 +1,5 @@
 const express = require('express')
-const port = 3000
+const port = 8000
 const router = require('./router/index')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -12,6 +12,6 @@ app.use(bodyParser.json())
 
 app.use('/', router)
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`http服务启动成功，端口为${port}`)
 })
