@@ -11,10 +11,10 @@ const router = express.Router()
 
 router.post(
   '/login',
-  // [
-  //   body('username').isString().withMessage('用户名必须为字符串'),
-  //   body('password').isString().withMessage('密码必须为字符串')
-  // ],
+  [
+    body('username').isString().withMessage('用户名必须为字符串'),
+    body('password').isString().withMessage('密码必须为字符串')
+  ],
   (req, res, next) => {
     const err = validationResult(req)
     if (!err.isEmpty()) {

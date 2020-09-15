@@ -3,12 +3,12 @@ const mysql = require('mysql')
 const { MYSQL_CONF } = require('../config/db')
 const { debug } = require('../utils/constant')
 
-function sqlCon() {
+function connect() {
   return mysql.createConnection(MYSQL_CONF)
 }
 
 function querySql(sql) {
-  const con = sqlCon().connect()
+  const con = connect()
   debug && console.log(sql)
   return new Promise((resolve, reject) => {
     try {
