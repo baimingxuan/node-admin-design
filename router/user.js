@@ -2,7 +2,7 @@ const express = require('express')
 const boom = require('boom')
 const jwt = require('jsonwebtoken')
 const Result = require('../models/Result')
-const { login, findUser } = require('../controller/user')
+const { login } = require('../controller/user')
 const { PRIVATE_KEY, JWT_EXPIRED } = require('../utils/constant')
 const { body, validationResult } = require('express-validator')
 

@@ -1,15 +1,16 @@
 const express = require('express')
 const boom = require('boom')
 const userRouter = require('./user')
-const {
-  CODE_ERROR
-} = require('../utils/constant')
+const jwtAuth = require('./jwt')
+const Result = require('../models/Result')
 
 // 注册路由
 const router = express.Router()
 
+router.use(jwtAuth)
+
 router.get('/', (req, res) => {
-  res.send('欢迎登录！')
+  res.send('vue-admin-design欢迎您！')
 })
 
 router.use('/user', userRouter)
@@ -31,7 +32,7 @@ router.use((req, res, next) => {
  */
 router.use((err, req, res, next) => {
   const msg = (err && err.message) || '系统错误'
-  const statusCode = (err.output && err.output.statusCode) || 500;
+  const statusCode = (err.output && err.output.statusCode) || 500
   const errorMsg = (err.output && err.output.payload && err.output.payload.error) || err.message
   res.status(statusCode).json({
     code: CODE_ERROR,
