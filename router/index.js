@@ -31,15 +31,21 @@ router.use((req, res, next) => {
  * 第二，方法的必须放在路由最后
  */
 router.use((err, req, res, next) => {
-  const msg = (err && err.message) || '系统错误'
-  const statusCode = (err.output && err.output.statusCode) || 500
-  const errorMsg = (err.output && err.output.payload && err.output.payload.error) || err.message
-  res.status(statusCode).json({
-    code: CODE_ERROR,
-    msg,
-    error: statusCode,
-    errorMsg
-  })
+  if (err.name && err.name === 'UnauthorizedError') {
+    const { status = 401, message } = err
+    new Result(null, 'Token验证失败', {
+      error: status,
+      errMsg: message
+    }).jtwError(res.status(status))
+  } else {
+    const msg = (err && err.message) || '系统错误'
+    const statusCode = (err.output && err.output.statusCode) || 500
+    const errMsg = (err.output && err.output.payload && err.output.payload.error) || err.message
+    new Result(null, msg, {
+      error: statusCode,
+      errMsg
+    }).fail(res.status(statusCode))
+  }
 })
 
 module.exports = router

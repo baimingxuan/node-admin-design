@@ -1,8 +1,9 @@
 const jwt = require('express-jwt')
-const { PRIVATE_KEY } = require('../utils/constant')
+const { SECRET_KEY } = require('../utils/constant')
 
 module.exports = jwt({
-  secret: PRIVATE_KEY,
+  secret: SECRET_KEY,
+  algorithms: ['HS256'],
   credentialsRequired: true
 }).unless({
   path: ['/user/login']

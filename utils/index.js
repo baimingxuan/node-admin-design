@@ -1,9 +1,14 @@
-const crypto = require('crypto')
+const jwt = require('jsonwebtoken')
+const { SECRET_KEY } = require('./constant')
 
-function md5(str) {
-  return crypto.createHash('md5').update(String(str)).digest('hex')
+function decoded(req) {
+  let token = req.get('Authorization')
+  if (token.indexOf('Bearer') === 0) {
+    token = token.replace('Bearer', '')
+  }
+  return jwt.verify(token, SECRET_KEY)
 }
 
 module.exports = {
-  md5
+  decoded
 }
