@@ -5,7 +5,7 @@ function login(username, password) {
 }
 
 function findUser(username) {
-  return queryUser(`select id, username, nickname, role, avatar from user where username='${username}';`)
+  return queryUser(`select * from user where username='${username}';`)
 }
 
 module.exports = {
