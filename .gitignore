@@ -5,3 +5,6 @@ node_modules
 
 config/db.js
 deploy.yaml
+
+package-lock.json
+yarn.lock
