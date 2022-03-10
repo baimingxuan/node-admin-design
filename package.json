@@ -1,39 +1,27 @@
 {
-  "name": "node-admin-system",
-  "version": "1.0.0",
-  "description": "基于nodejs,为vue-admin-system开发api server",
-  "main": "app.js",
+  "name": "koa-admin-design",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=dev nodemon app.js",
-    "prod": "cross-env NODE_ENV=production pm2 start app.js"
+    "start": "node bin/www",
+    "dev": "./node_modules/.bin/nodemon bin/www",
+    "prd": "pm2 start bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/baimingxuan/node-admin-system.git"
-  },
-  "keywords": [
-    "nodejs"
-  ],
-  "author": "baimingxuan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/baimingxuan/node-admin-system/issues"
-  },
-  "homepage": "https://github.com/baimingxuan/node-admin-system#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "boom": "^7.3.0",
-    "cors": "^2.8.5",
-    "crypto": "^1.0.1",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "express-validator": "^6.6.1",
-    "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1"
+    "debug": "^4.1.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.0",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^1.19.1"
   }
 }
