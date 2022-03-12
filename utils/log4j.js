@@ -32,8 +32,12 @@ log4js.configure({
             appenders:['console'],
             level: 'debug'
         },
+        info:{
+            appenders: ['info', 'console'],
+            level: 'info'
+        },
         error:{
-            appenders:['console'],
+            appenders:['error', 'console'],
             level: 'error'
         }
     }
@@ -56,7 +60,7 @@ exports.debug = (content)=>{
  * 
 */
 exports.info = (content)=>{
-    const logger = log4js.getLogger();
+    const logger = log4js.getLogger('info');
     logger.level = levels.info;
     logger.info(content);
 }
@@ -67,7 +71,7 @@ exports.info = (content)=>{
  * 
 */
 exports.error = (content)=>{
-    const logger = log4js.getLogger();
+    const logger = log4js.getLogger('error');
     logger.level = levels.error;
     logger.error(content);
 }
