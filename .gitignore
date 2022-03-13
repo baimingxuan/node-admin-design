@@ -2,9 +2,7 @@
 .idea
 .DS_Store
 node_modules
-
-config/db.js
-deploy.yaml
+logs
 
 package-lock.json
 yarn.lock
