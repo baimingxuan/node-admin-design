@@ -3,7 +3,7 @@
 */
 const router = require('koa-router')()
 const User = require('../models/userSchema')
-const util = require('../utils/utils')
+const util = require('../utils/util')
 
 router.prefix('/users')
 
