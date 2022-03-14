@@ -5,10 +5,12 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const log4js = require('./utils/log4j')
 const router = require('koa-router')()
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const util = require('./utils/util')
 
 // error handler
 onerror(app)
@@ -29,10 +31,16 @@ app.use(views(__dirname + '/views', {
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  log4js.info(`get params:${JSON.stringify(ctx.request.query)}`)
+  log4js.info(`post params:${JSON.stringify(ctx.request.body)}`)
+  await next().catch((error) => {
+    if (error.status === '401') {
+      ctx.status = 200;
+      ctx.body = util.fail('Token认证失败', util.CODE.AUTH_ERROR);
+    } else {
+      throw error;
+    }
+  })
 })
 
 // routes
@@ -41,9 +49,11 @@ router.prefix('/api')
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
+app.use(router.routes(), router.allowedMethods())
+
 // error-handling
-app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+app.on('error', (error, ctx) => {
+  log4js.error(`${error.stack}`)
 });
 
 module.exports = app
