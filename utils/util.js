@@ -35,10 +35,11 @@ module.exports = {
       code,data,msg
     }
   },
-  success(msg='',code=CODE.BUSINESS_ERROR){
+  fail(data='',msg='',code=CODE.BUSINESS_ERROR){
     log4js.debug(msg);
     return {
       code,data,msg
     }
-  }
+  },
+  CODE
 }
