@@ -14,7 +14,7 @@ router.post('/login', async (ctx)=>{
     const res = await User.findOne({
       userName,
       userPwd
-    })
+    }, 'userId userName userEmail state role deptId roleList')
 
     if (res) {
       const data = res._doc;

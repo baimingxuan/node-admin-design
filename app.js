@@ -7,6 +7,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const log4js = require('./utils/log4j')
 const router = require('koa-router')()
+const koajwt = require('koa-jwt')
 
 const users = require('./routes/users')
 const util = require('./utils/util')
@@ -41,6 +42,10 @@ app.use(async (ctx, next) => {
     }
   })
 })
+
+app.use(koajwt({ secret: 'admin-design' }).unless({
+  path: [/^\/api\/users\/login/]
+}))
 
 // routes
 router.prefix('/api')
