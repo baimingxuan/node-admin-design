@@ -1,0 +1,7 @@
+.vscode
+.idea
+.husky
+
+node_modules
+pnpm-lock.yaml
+

@@ -1,8 +1,8 @@
-.git
-.idea
-.DS_Store
 node_modules
-logs
+.eslintcache
 
-package-lock.json
-yarn.lock
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.DS_Store
