@@ -4,7 +4,8 @@ import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
 import { errorHandler } from './middlewares/error.js'
-import sequelize from './core/db.js'
+import sequelize from './config/db.js'
+import userRouter from './routes/user.js'
 
 const app = new Koa()
 
@@ -22,6 +23,9 @@ app.use(errorHandler)
 
 // 解析请求体
 app.use(bodyParser())
+
+// 路由挂载
+app.use(userRouter.routes())
 
 // 同步所有模型
 sequelize.sync().catch(err => {

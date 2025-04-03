@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import config from '../config/index.js'
+import config from './index.js'
 
 const { database, username, password, host, port } = config.database
 
