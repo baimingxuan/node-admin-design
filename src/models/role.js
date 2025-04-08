@@ -44,7 +44,7 @@ const Role = sequelize.define(
   },
   {
     tableName: 'sys_role',
-    comment: '角色表'
+    comment: '系统角色'
   }
 )
 export default Role
