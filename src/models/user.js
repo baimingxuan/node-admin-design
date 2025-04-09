@@ -88,7 +88,6 @@ const User = sequelize.define(
     }
   },
   {
-    tableName: 'sys_user',
     comment: '系统用户'
   }
 )

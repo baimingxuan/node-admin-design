@@ -47,7 +47,6 @@ const Dept = sequelize.define(
     }
   },
   {
-    tableName: 'sys_dept',
     comment: '系统部门'
   }
 )

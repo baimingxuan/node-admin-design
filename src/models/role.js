@@ -43,7 +43,6 @@ const Role = sequelize.define(
     }
   },
   {
-    tableName: 'sys_role',
     comment: '系统角色'
   }
 )

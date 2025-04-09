@@ -87,7 +87,6 @@ const Menu = sequelize.define(
     }
   },
   {
-    tableName: 'sys_menu',
     comment: '系统菜单'
   }
 )

@@ -37,7 +37,6 @@ const Job = sequelize.define(
     }
   },
   {
-    tableName: 'sys_job',
     comment: '系统岗位'
   }
 )
