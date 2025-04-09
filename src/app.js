@@ -4,8 +4,8 @@ import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
 import { errorHandler } from './middlewares/error.js'
-import sequelize from './config/db.js'
-import userRouter from './routes/user.js'
+// import userRouter from './routes/user.js'
+import db from './models/index.js'
 
 const app = new Koa()
 
@@ -25,10 +25,10 @@ app.use(errorHandler)
 app.use(bodyParser())
 
 // 路由挂载
-app.use(userRouter.routes())
+// app.use(userRouter.routes())
 
 // 同步所有模型
-sequelize.sync().catch(err => {
+db.sequelize.sync().catch(err => {
   console.error('数据库连接失败:', err)
 })
 

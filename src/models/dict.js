@@ -1,7 +1,7 @@
 export default (sequelize, DataTypes) => {
   // 定义字典模型
   const Dict = sequelize.define(
-    'sys_dict',
+    'Dict',
     {
       id: {
         type: DataTypes.BIGINT,
@@ -32,6 +32,7 @@ export default (sequelize, DataTypes) => {
       }
     },
     {
+      tableName: 'sys_dict',
       comment: '系统字典'
     }
   )

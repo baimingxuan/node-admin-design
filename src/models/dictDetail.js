@@ -1,7 +1,7 @@
 export default (sequelize, DataTypes) => {
   // 定义字典详情模型
   const DictDetail = sequelize.define(
-    'sys_dict_detail',
+    'DictDetail',
     {
       detail_id: {
         type: DataTypes.BIGINT,
@@ -41,6 +41,7 @@ export default (sequelize, DataTypes) => {
       }
     },
     {
+      tableName: 'sys_dict_detail',
       comment: '系统字典详情'
     }
   )

@@ -15,7 +15,7 @@ const sequelize = new Sequelize(database, username, password, {
     updatedAt: 'update_time',
     deletedAt: 'delete_time',
     underscored: true, // 下划线字段（snake_case）
-    freezeTableName: true, // 表名与模型名相同
+    // freezeTableName: true, // 表名与模型名相同
     scopes: {
       bh: {
         attributes: {
