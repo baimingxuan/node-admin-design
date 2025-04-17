@@ -24,10 +24,18 @@
 
 ### 前提条件
 
-- Node.js (>= 12.x)
-- MySQL (>= 5.7)
+- Node.js (>= 20)
+- Pnpm (>= 10)
+- MySQL (>= 8)
 
-### 安装依赖
+### 项目运行
 
 ```bash
+// 安装依赖
 pnpm install
+
+// 初始化数据库：
+node scripts/init-db.js
+
+// 启动开发服务
+pnpm run dev

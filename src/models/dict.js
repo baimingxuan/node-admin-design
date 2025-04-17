@@ -3,7 +3,7 @@ export default (sequelize, DataTypes) => {
   const Dict = sequelize.define(
     'Dict',
     {
-      id: {
+      dict_id: {
         type: DataTypes.BIGINT,
         primaryKey: true,
         autoIncrement: true,
