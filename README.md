@@ -34,8 +34,5 @@
 // 安装依赖
 pnpm install
 
-// 初始化数据库：
-node scripts/init-db.js
-
 // 启动开发服务
 pnpm run dev
