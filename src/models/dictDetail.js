@@ -31,13 +31,19 @@ export default (sequelize, DataTypes) => {
       },
       create_by: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '创建者'
       },
       update_by: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '更新者'
+      },
+      create_time: {
+        type: DataTypes.DATE,
+        comment: '创建时间'
+      },
+      update_time: {
+        type: DataTypes.DATE,
+        comment: '更新时间'
       }
     },
     {

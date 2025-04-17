@@ -31,12 +31,10 @@ export default (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '组件名称'
       },
       component: {
         type: DataTypes.STRING,
-        allowNull: true,
         comment: '组件路径'
       },
       menu_sort: {
@@ -46,12 +44,10 @@ export default (sequelize, DataTypes) => {
       },
       icon: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '菜单图标'
       },
       path: {
         type: DataTypes.STRING,
-        allowNull: true,
         comment: '链接地址'
       },
       iframe: {
@@ -71,18 +67,23 @@ export default (sequelize, DataTypes) => {
       },
       permission: {
         type: DataTypes.STRING,
-        allowNull: true,
         comment: '权限标识'
       },
       create_by: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '创建者'
       },
       update_by: {
         type: DataTypes.STRING(100),
-        allowNull: true,
         comment: '更新者'
+      },
+      create_time: {
+        type: DataTypes.DATE,
+        comment: '创建时间'
+      },
+      update_time: {
+        type: DataTypes.DATE,
+        comment: '更新时间'
       }
     },
     {
