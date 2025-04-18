@@ -11,7 +11,6 @@ export default (sequelize, DataTypes) => {
       },
       pid: {
         type: DataTypes.BIGINT,
-        allowNull: false,
         comment: '上级菜单ID'
       },
       sub_count: {
