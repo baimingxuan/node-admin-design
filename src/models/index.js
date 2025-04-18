@@ -6,16 +6,33 @@ import sequelize from '../config/db.js'
 const db = {}
 const __dirname = import.meta.dirname
 
-// 读取当前目录下的所有模型文件
-const modelFiles = fs.readdirSync(__dirname).filter(file => {
-  return file.indexOf('.') !== 0 && file !== 'index.js' && file.slice(-3) === '.js'
-})
+// 递归读取目录下的所有模型文件
+const readModelFiles = dir => {
+  let files = []
+  const items = fs.readdirSync(dir)
+
+  for (const item of items) {
+    const fullPath = path.join(dir, item)
+    const stat = fs.statSync(fullPath)
+
+    if (stat.isDirectory()) {
+      // 如果是目录，递归读取
+      files = files.concat(readModelFiles(fullPath))
+    } else if (item.indexOf('.') !== 0 && item !== 'index.js' && item.slice(-3) === '.js') {
+      // 如果是 JS 文件且不是 index.js
+      files.push(fullPath)
+    }
+  }
+
+  return files
+}
 
 // 导入模型文件并注册到db对象中
-const importModels = async () => {
+const loadModels = async () => {
+  const modelFiles = readModelFiles(__dirname)
+
   for (const file of modelFiles) {
-    const modulePath = path.join(__dirname, file)
-    const module = await import(modulePath)
+    const module = await import(file)
     const model = module.default(sequelize, DataTypes)
     db[model.name] = model
   }
@@ -28,7 +45,7 @@ const importModels = async () => {
   })
 }
 
-await importModels()
+await loadModels()
 
 db.sequelize = sequelize
 

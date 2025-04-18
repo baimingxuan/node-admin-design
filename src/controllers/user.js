@@ -1,4 +1,4 @@
-import User from '../models/user.js'
+import User from '../models/system/user.js'
 
 class userController {
   static async getUserList(ctx) {
