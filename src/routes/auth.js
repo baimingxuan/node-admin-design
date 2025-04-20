@@ -8,6 +8,6 @@ const router = new Router({
 
 router.post('/login', authController.login)
 router.get('/info', authMiddleware, authController.info)
-router.post('/logout', authMiddleware, authController.logout)
+router.delete('/logout', authMiddleware, authController.logout)
 
 export default router

@@ -4,7 +4,7 @@ import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
 import { errorHandler } from './middlewares/error.js'
-// import userRouter from './routes/user.js'
+import userRouter from './routes/system/user.js'
 import authRouter from './routes/auth.js'
 import db from './models/index.js'
 
@@ -27,6 +27,7 @@ app.use(bodyParser())
 
 // 路由挂载
 app.use(authRouter.routes()).use(authRouter.allowedMethods())
+app.use(userRouter.routes()).use(userRouter.allowedMethods())
 
 // 同步所有模型
 db.sequelize.sync().catch(err => {
