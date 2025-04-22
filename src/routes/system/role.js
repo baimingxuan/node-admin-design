@@ -12,6 +12,6 @@ router.get('/:id', authMiddleware, roleController.detail)
 router.get('/:id/menus', authMiddleware, roleController.menus)
 router.post('/', authMiddleware, roleController.create)
 router.put('/:id', authMiddleware, roleController.update)
-router.delete('/:id', authMiddleware, roleController.delete)
+router.delete('/:id', authMiddleware, roleController.remove)
 
 export default router

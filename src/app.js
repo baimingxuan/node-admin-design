@@ -7,6 +7,7 @@ import { errorHandler } from './middlewares/error.js'
 import userRouter from './routes/system/user.js'
 import authRouter from './routes/auth.js'
 import roleRouter from './routes/system/role.js'
+import menuRouter from './routes/system/menu.js'
 import db from './models/index.js'
 
 const app = new Koa()
@@ -30,6 +31,7 @@ app.use(bodyParser())
 app.use(authRouter.routes()).use(authRouter.allowedMethods())
 app.use(userRouter.routes()).use(userRouter.allowedMethods())
 app.use(roleRouter.routes()).use(roleRouter.allowedMethods())
+app.use(menuRouter.routes()).use(menuRouter.allowedMethods())
 
 // 同步所有模型
 db.sequelize.sync().catch(err => {
