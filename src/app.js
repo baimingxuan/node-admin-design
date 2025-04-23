@@ -9,6 +9,7 @@ import authRouter from './routes/auth.js'
 import roleRouter from './routes/system/role.js'
 import menuRouter from './routes/system/menu.js'
 import deptRouter from './routes/system/dept.js'
+import jobRouter from './routes/system/job.js'
 import db from './models/index.js'
 
 const app = new Koa()
@@ -34,6 +35,7 @@ app.use(userRouter.routes()).use(userRouter.allowedMethods())
 app.use(roleRouter.routes()).use(roleRouter.allowedMethods())
 app.use(menuRouter.routes()).use(menuRouter.allowedMethods())
 app.use(deptRouter.routes()).use(deptRouter.allowedMethods())
+app.use(jobRouter.routes()).use(jobRouter.allowedMethods())
 
 // 同步所有模型
 db.sequelize.sync().catch(err => {
