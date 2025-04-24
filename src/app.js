@@ -3,15 +3,8 @@ import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
-import { errorHandler } from './middlewares/error.js'
-import userRouter from './routes/system/user.js'
-import authRouter from './routes/auth.js'
-import roleRouter from './routes/system/role.js'
-import menuRouter from './routes/system/menu.js'
-import deptRouter from './routes/system/dept.js'
-import jobRouter from './routes/system/job.js'
-import dictRouter from './routes/system/dict.js'
-import dictDetailRouter from './routes/system/dictDetail.js'
+import errorHandler from './middlewares/error.js'
+import router from './routes/index.js'
 import db from './models/index.js'
 
 const app = new Koa()
@@ -32,14 +25,7 @@ app.use(errorHandler)
 app.use(bodyParser())
 
 // 路由挂载
-app.use(authRouter.routes()).use(authRouter.allowedMethods())
-app.use(userRouter.routes()).use(userRouter.allowedMethods())
-app.use(roleRouter.routes()).use(roleRouter.allowedMethods())
-app.use(menuRouter.routes()).use(menuRouter.allowedMethods())
-app.use(deptRouter.routes()).use(deptRouter.allowedMethods())
-app.use(jobRouter.routes()).use(jobRouter.allowedMethods())
-app.use(dictRouter.routes()).use(dictRouter.allowedMethods())
-app.use(dictDetailRouter.routes()).use(dictDetailRouter.allowedMethods())
+app.use(router.routes()).use(router.allowedMethods())
 
 // 同步所有模型
 db.sequelize.sync().catch(err => {

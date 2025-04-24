@@ -1,4 +1,4 @@
-export const errorHandler = async (ctx, next) => {
+export default async (ctx, next) => {
   try {
     await next()
   } catch (err) {
