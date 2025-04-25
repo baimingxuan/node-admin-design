@@ -26,11 +26,13 @@
     "koa-jwt": "^4.0.4",
     "koa-logger": "^3.2.1",
     "koa-router": "^13.0.1",
+    "koa-session": "^7.0.2",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.21",
     "log4js": "^6.9.1",
     "mysql2": "^3.14.0",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",

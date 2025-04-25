@@ -6,6 +6,7 @@ const router = new Router({
   prefix: '/api/auth'
 })
 
+router.get('/captcha', authController.captcha)
 router.post('/login', authController.login)
 router.get('/info', authMiddleware, authController.info)
 router.delete('/logout', authMiddleware, authController.logout)

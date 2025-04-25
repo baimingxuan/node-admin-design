@@ -1,12 +1,45 @@
 import jwt from 'jsonwebtoken'
+import svgCaptcha from 'svg-captcha'
 import db from '../models/index.js'
 import config from '../config/index.js'
 
 const { User, Role, Menu } = db
 
+// 生成验证码
+export const captcha = async ctx => {
+  // 创建验证码
+  const captcha = svgCaptcha.create({
+    size: 4, // 验证码长度
+    ignoreChars: '0o1il', // 排除容易混淆的字符
+    noise: 2, // 干扰线条数量
+    color: true, // 验证码颜色
+    background: '#f0f0f0' // 背景色
+  })
+
+  // 将验证码存入会话
+  ctx.session.captcha = captcha.text.toLowerCase()
+
+  // 设置响应头
+  ctx.type = 'image/svg+xml'
+  ctx.body = captcha.data
+}
+
 // 用户登录
 export const login = async ctx => {
-  const { username, password } = ctx.request.body
+  const { username, password, captcha } = ctx.request.body
+
+  // 验证验证码
+  if (!captcha || !ctx.session.captcha || captcha.toLowerCase() !== ctx.session.captcha) {
+    ctx.status = 400
+    ctx.body = {
+      code: 400,
+      message: '验证码错误'
+    }
+    return
+  }
+
+  // 清除验证码，防止重复使用
+  ctx.session.captcha = null
 
   // 查询用户
   const user = await User.findOne({
