@@ -16,7 +16,6 @@
   "dependencies": {
     "@koa/cors": "^5.0.0",
     "bcryptjs": "^3.0.2",
-    "fast-glob": "^3.3.3",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
