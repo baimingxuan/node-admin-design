@@ -19,7 +19,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
-    "koa": "^2.16.0",
+    "koa": "^3.1.2",
     "koa-bodyparser": "^4.4.1",
     "koa-helmet": "^8.0.1",
     "koa-jwt": "^4.0.4",
