@@ -30,7 +30,7 @@
     "lodash": "^4.17.21",
     "log4js": "^6.9.1",
     "mysql2": "^3.14.0",
-    "sequelize": "^6.37.7",
+    "sequelize": "^6.37.8",
     "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
